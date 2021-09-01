@@ -1,0 +1,439 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PACKAGING",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "/PACKAGING/PackagingJob/ByLine": {
+      "get": {
+        "tags": [
+          "PackagingJob"
+        ],
+        "summary": "Returns the packaging jobs currently scheduled for a packaging line.",
+        "parameters": [
+          {
+            "name": "lineNumber",
+            "in": "query",
+            "description": "The identifier of the packaging line.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The identifier of the packaging line."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SysPro.Service.Greisinger.PackagingSST.PackagingJob"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SysPro.Service.Greisinger.PackagingSST.PackagingJob"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SysPro.Service.Greisinger.PackagingSST.PackagingJob"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PACKAGING/PackagingJob/Begin": {
+      "put": {
+        "tags": [
+          "PackagingJob"
+        ],
+        "summary": "Changes the status of a packaging job to \"Started\".",
+        "parameters": [
+          {
+            "name": "jobNumber",
+            "in": "query",
+            "description": "The number of the packaging job.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The number of the packaging job."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PACKAGING/PackagingJob/End": {
+      "put": {
+        "tags": [
+          "PackagingJob"
+        ],
+        "summary": "Changes the status of a packaging job to \"ToEnd\".",
+        "parameters": [
+          {
+            "name": "jobNumber",
+            "in": "query",
+            "description": "The number of the packaging job.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The number of the packaging job."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PACKAGING/PackagingJob/ThermoFormedPackages": {
+      "put": {
+        "tags": [
+          "PackagingJob"
+        ],
+        "summary": "Reports the number of packages processed by the thermoformer for a packaging job.",
+        "parameters": [
+          {
+            "name": "jobNumber",
+            "in": "query",
+            "description": "The number of the packaging job.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The number of the packaging job."
+            }
+          },
+          {
+            "name": "numberOfPackages",
+            "in": "query",
+            "description": "The number thermoformed packages since the last report.",
+            "schema": {
+              "type": "integer",
+              "description": "The number thermoformed packages since the last report.",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PACKAGING/PackagingJob/NewBox": {
+      "put": {
+        "tags": [
+          "PackagingJob"
+        ],
+        "summary": "Reports the number of packages processed by the thermoformer for a packaging job.",
+        "parameters": [
+          {
+            "name": "jobNumber",
+            "in": "query",
+            "description": "The number of the packaging job.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The number of the packaging job."
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The reported box.",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysPro.Service.Greisinger.PackagingSST.Box"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysPro.Service.Greisinger.PackagingSST.Box"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysPro.Service.Greisinger.PackagingSST.Box"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysPro.Service.Greisinger.PackagingSST.Box"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SysPro.Contract.Core.ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SysPro.Service.Greisinger.PackagingSST.PackagingJob": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SysPro.Contract.Core.ErrorTypeEnum": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "SysPro.Contract.Core.ServiceResult": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "errorType": {
+            "$ref": "#/components/schemas/SysPro.Contract.Core.ErrorTypeEnum"
+          },
+          "errorMsg": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "messageKeys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "messageText": {
+            "type": "string",
+            "nullable": true
+          },
+          "stackTrace": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SysPro.Service.Greisinger.PackagingSST.Box": {
+        "type": "object",
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme.\r\n  Enter 'Bearer' [space] and then your token in the text input below.\r\n  Example: 'Bearer 12345abcdef'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
